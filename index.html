@@ -4,34 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Countdown Timer</h1>
         <div class="timer" id="timer">
-            <div class="time">
+            <div class="time" data-aos="fade-up">
                 <span id="days">00</span>
                 <span>Days</span>
             </div>
-            <div class="time">
+            <div class="time" data-aos="fade-up" data-aos-delay="100">
                 <span id="hours">00</span>
                 <span>Hours</span>
             </div>
-            <div class="time">
+            <div class="time" data-aos="fade-up" data-aos-delay="200">
                 <span id="minutes">00</span>
                 <span>Minutes</span>
             </div>
-            <div class="time">
+            <div class="time" data-aos="fade-up" data-aos-delay="300">
                 <span id="seconds">00</span>
                 <span>Seconds</span>
             </div>
         </div>
-        <div class="input-group">
+        <div class="input-group" data-aos="fade-up" data-aos-delay="400">
             <input type="datetime-local" id="datetime-picker">
             <button onclick="startTimer()">Start</button>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+    

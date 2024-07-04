@@ -1,6 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init();
+    loadTimer();
+});
+
 function startTimer() {
     const datetimePicker = document.getElementById('datetime-picker');
     const targetDate = new Date(datetimePicker.value);
+    if (isNaN(targetDate.getTime())) {
+        alert('Please select a valid date and time.');
+        return;
+    }
+    saveTimer(targetDate);
+    updateTimer(targetDate);
+}
+
+function saveTimer(targetDate) {
+    localStorage.setItem('countdownTargetDate', targetDate);
+}
+
+function loadTimer() {
+    const targetDate = new Date(localStorage.getItem('countdownTargetDate'));
+    if (!isNaN(targetDate.getTime())) {
+        updateTimer(targetDate);
+    }
+}
+
+function updateTimer(targetDate) {
     const timer = setInterval(() => {
         const now = new Date();
         const difference = targetDate - now;
@@ -12,6 +37,7 @@ function startTimer() {
             document.getElementById('minutes').textContent = '00';
             document.getElementById('seconds').textContent = '00';
             alert("Countdown finished!");
+            localStorage.removeItem('countdownTargetDate');
             return;
         }
 

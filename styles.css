@@ -1,26 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #0d324d 0%, #7f5a83 100%);
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    font-family: 'Roboto', sans-serif;
     color: #fff;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
     background: rgba(30, 30, 30, 0.9);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
 }
 
 h1 {
-    margin-bottom: 20px;
-    font-size: 2em;
+    margin-bottom: 30px;
+    font-size: 2.5em;
     color: #00ffa8;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .timer {
@@ -33,15 +39,18 @@ h1 {
 .time {
     background: #444;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     text-align: center;
+    min-width: 70px;
 }
 
 .time span:first-child {
     display: block;
     font-size: 2em;
     margin-bottom: 5px;
+    color: #00ffa8;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .input-group {
@@ -57,6 +66,8 @@ input[type="datetime-local"] {
     border: none;
     background: #333;
     color: #fff;
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -67,9 +78,98 @@ button {
     color: #333;
     cursor: pointer;
     font-size: 1em;
-    transition: background 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
     background: #00e699;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #00ffa8, 0 0 10px #00ffa8, 0 0 15px #00ffa8, 0 0 20px #00ffa8, 0 0 25px #00ffa8;
+    }
+    100% {
+        text-shadow: 0 0 20px #00ffa8, 0 0 30px #00ffa8, 0 0 40px #00ffa8, 0 0 50px #00ffa8, 0 0 60px #00ffa8;
+    }
+}
+
+h1:hover {
+    animation: glow 1s infinite alternate;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+[data-aos] {
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(50px);
+}
+
+/* Additional CSS */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+    z-index: -1;
+}
+
+.timer .time span:last-child {
+    font-size: 0.8em;
+    color: #ccc;
+}
+
+input[type="datetime-local"]:hover,
+input[type="datetime-local"]:focus {
+    background: #444;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 168, 0.5);
+}
+
+@media (max-width: 600px) {
+    .timer {
+        flex-direction: column;
+    }
+
+    .time {
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    input[type="datetime-local"] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
 }
